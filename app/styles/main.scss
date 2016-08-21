@@ -1,0 +1,381 @@
+$icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
+
+// bower:scss
+@import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+// endbower
+
+$grid-gutter-width: 20px;
+
+@font-face {
+  font-family: 'gillsans_sb';
+  src: url('../fonts/GillSans-SemiBold.eot');
+  src: local('☺'), url('../fonts/GillSans-SemiBold.woff') format('woff'), url('../fonts/GillSans-SemiBold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'gillsans_l';
+  src: local('☺'), url('../fonts/GillSans-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'gillsans';
+  src: local('☺'), url('../fonts/GillSans.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+$font-family-base: gillsans_l;
+$brand-primary: #992829;
+
+p, a, div, li{
+  font-family: $font-family-base;
+}
+
+*{
+  outline: none !important;
+}
+
+.offscreen-menu{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  visibility: hidden;
+  @include transition(.4s);
+  z-index: $zindex-modal;
+  background: rgba(255, 255, 255, .9);
+  &._opened{
+    opacity: 1;
+    visibility: visible;
+  }
+  h3{
+    margin: 0;
+    padding: 20px;
+    letter-spacing: .3em;
+    button{
+      background: transparent;
+      border: 0;
+      color: $brand-primary;
+    }
+  }
+  nav{
+    position: absolute;
+    top: 55%;
+    width: 100%;
+    @include translate(0, -50%);
+    text-align: center;
+    a{
+      color: black;
+      font-size: 33px;
+    }
+    li{
+      margin-bottom: 40px;
+    }
+  }
+}
+
+header{
+  position: relative;
+  background: white;
+  height: 100px;
+  .logo{
+    height: 100%;
+    display: inline-block;
+    vertical-align: top;
+    img{
+      height: 100px;
+    }
+  }
+  .divide{
+    display: inline-block;
+    width: 1px;
+    height: 50px;
+    margin: 25px;
+    background: $gray-lighter;
+    vertical-align: top;
+  }
+  .open-menu{
+    position: relative;
+    display: inline-block;
+    background: transparent;
+    border: 0;
+    margin: 36px 0;
+    color: $gray;
+    text-transform: uppercase;
+    letter-spacing: .5em;
+    z-index: 2;
+  }
+  nav{
+    height: 100%;
+    display: inline-block;
+    vertical-align: top;
+    ul{
+      li{
+        display: inline-block;
+        a{
+          height: 100%;
+          padding: 0 28px;
+          line-height: 100px;
+          font-size: 11px;
+          color: $gray;
+          font-weight: 100;
+          letter-spacing: .3em;
+          &:hover, &.active{
+            color: $brand-primary;
+            text-transform: uppercase;
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: $screen-sm-min) {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    height: 70px;
+    z-index: $zindex-navbar-fixed;
+    .logo{
+      position: absolute;
+      left: 50%;
+      @include translate(-50%, 0);
+      img{
+        height: 70px;
+      }
+    }
+    .open-menu{
+      margin: 20px 0;
+    }
+  }
+}
+
+.main > .container{
+  min-height: 90vh;
+  @media screen and (max-width: $screen-sm-min) {
+    padding-top: 70px !important;
+  }
+}
+
+.main{
+  background: $gray-lighter;
+  min-height: 600px;
+  @media screen and (max-width: $screen-sm-min) {
+    padding-bottom: 200px;
+  }
+  .main-pic{
+    position: relative;
+    height: 110vh;
+    width: 100%;
+    >div{
+      position: absolute;
+      width: 50vw;
+      height: 100%;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      cursor: pointer;
+      padding: 10px 5px 10px 10px;
+      background: white;
+      &:hover{
+        >a{
+          color: black;
+        }
+      }
+      >div{
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-image: url(../images/main2.jpg);
+        background-position: center;
+        -webkit-background-size: cover;
+        background-size: cover;
+        @include transition(7s);
+      }
+      >a{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        @include translate(-50%, -50%);
+        font-size: 70px;
+        font-family: gillsans_l;
+        text-transform: uppercase;
+        color: white;
+        z-index: 3;
+        letter-spacing: .3em;
+        &:hover{
+          text-decoration: none;
+        }
+        @media screen and (max-width: $screen-sm-min) {
+          font-size: 40px;
+          text-align: center;
+          line-height: 70px;
+        }
+      }
+      &:nth-child(2){
+        left: 50vw;
+        padding: 10px 10px 10px 5px;
+        >div{
+          background-image: url(../images/main3.jpg);
+        }
+      }
+    }
+    @media screen and (max-width: $screen-sm-min) {
+      margin-top: 70px;
+      >div{
+        position: relative;
+        width: 100vw;
+        height: 70vh;
+        padding: 10px !important;
+        padding-bottom: 0 !important;
+        &:nth-child(2){
+          left: auto;
+        }
+      }
+    }
+  }
+  h1{
+    text-align: right;
+    font-size: 60px;
+    font-weight: 100;
+
+  }
+  .row{
+    >div{
+      position: relative;
+      img{
+        width: 100%;
+      }
+    }
+  }
+}
+
+footer{
+  background: $gray-lighter;
+  min-height: 100px;
+  padding-top: 40px;
+  nav{
+    margin-bottom: 18px;
+    margin-top: -18px;
+    a{
+      color: $gray;
+      margin-right: 30px;
+      text-transform: uppercase;
+      letter-spacing: .2em;
+    }
+  }
+  p{
+    color: white;
+    color: $gray-light;
+    strong{
+      font-family: gillsans_sb;
+    }
+  }
+  .social{
+    position: relative;
+    top: -12px;
+    a{
+      font-size: 33px;
+      color: $gray;
+      margin-left: 50px;
+      &:hover{
+        color: $gray-dark;
+      }
+    }
+  }
+}
+
+#campaign{
+  .container {
+    padding-top: 30px;
+    p{
+      letter-spacing: .3em;
+    }
+    > .row{
+      > div {
+        .text{
+          text-align: center;
+          @media screen and (max-width: $screen-sm-min) {
+            margin-top: 20px;
+            p{
+              font-size: 12px;
+            }
+          }
+        }
+      }
+      > div{
+        > .row{
+          >div{
+            @media screen and (max-width: $screen-sm-min) {
+              padding-top: $grid-gutter-width / 4;
+              padding-bottom: $grid-gutter-width / 4;
+            }
+            padding-top: $grid-gutter-width / 2;
+            padding-bottom: $grid-gutter-width / 2;
+          }
+          &:nth-child(even){
+            >div{
+              @include make-md-column(12);
+              @include make-sm-column(12);
+              @include make-xs-column(12);
+            }
+          }
+          &:nth-child(odd) {
+            >div{
+              &:nth-child(1){
+                @include make-md-column(6);
+                @include make-sm-column(6);
+                @include make-xs-column(6);
+                @media screen and (max-width: $screen-sm-min) {
+                  padding-right: 5px;
+                }
+              }
+              &:nth-child(2){
+                @media screen and (max-width: $screen-sm-min) {
+                  padding-left: 5px;
+                }
+                @include make-md-column(6);
+                @include make-sm-column(6);
+                @include make-xs-column(6);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+html#ecwid_html body#ecwid_body div.ecwid-minicart {
+  width: 100px !important;
+  height: 100px !important;
+  border: 0 !important;
+  @media screen and (max-width: $screen-sm-min) {
+    width: 70px !important;
+    height: 70px !important;
+  }
+}
+
+html#ecwid_html body#ecwid_body div.ecwid-minicart-clickArea{
+  @media screen and (max-width: $screen-sm-min) {
+    left: 30px !important;
+    top: 10px !important;
+  }
+}
+
+html#ecwid_html body#ecwid_body div.ecwid-minicart-caption{
+  display: none !important;
+}
+
+html#ecwid_html body#ecwid_body div.ecwid-minicart-label{
+  display: none !important;
+}
+
+html#ecwid_html body#ecwid_body div.ecwid-minicart-link{
+  display: none !important;
+}
